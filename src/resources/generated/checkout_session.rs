@@ -4585,6 +4585,7 @@ impl std::default::Default for CheckoutSessionSubmitType {
 #[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum CheckoutSessionUiMode {
+    Custom,
     Embedded,
     Hosted,
 }
@@ -4592,6 +4593,7 @@ pub enum CheckoutSessionUiMode {
 impl CheckoutSessionUiMode {
     pub fn as_str(self) -> &'static str {
         match self {
+            CheckoutSessionUiMode::Custom => "custom",
             CheckoutSessionUiMode::Embedded => "embedded",
             CheckoutSessionUiMode::Hosted => "hosted",
         }
@@ -4611,7 +4613,7 @@ impl std::fmt::Display for CheckoutSessionUiMode {
 }
 impl std::default::Default for CheckoutSessionUiMode {
     fn default() -> Self {
-        Self::Embedded
+        Self::Custom
     }
 }
 
